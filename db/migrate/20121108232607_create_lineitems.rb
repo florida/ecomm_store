@@ -1,8 +1,8 @@
 class CreateLineitems < ActiveRecord::Migration
   def change
     create_table :lineitems do |t|
-      t.references :product_id
-      t.references :order_id
+      t.references :product
+      t.references :order
       t.integer :quantity
       t.float :unit_price
 
