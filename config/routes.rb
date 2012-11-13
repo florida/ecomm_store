@@ -2,6 +2,8 @@ Elmorfstore::Application.routes.draw do
 namespace :admin do
   resources :orders, :products
 end
+
+resources :orders, :products
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
