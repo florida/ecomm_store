@@ -1,2 +1,18 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_tag sessions_path do %>
+	<section class="field">
+		<% label_tag :email %>
+		<% text_field_tag :email, params [:email] %>
+		
+	</section>
+	<section class="field">
+		<%= label_tag :password %>
+		<%= password_field_tag :password %>
+	</section>
+	<section class="field">
+		<%= check_box_tag :remember_me, 1, params[:remember_me]%>	
+		<%= label_tag :remember_me %>
+	</section>
+	<section class="actions">
+		<%= submit_tag "Log in" %>
+	</section>
+<% end %>
