@@ -14,8 +14,17 @@
 		<li><%= link_to 'Products', admin_products_path %></li>
 		<li></li>
 	</ul>
+	
+	
 </header>
-<%= yield %>
 
+
+
+<section id="container">
+	<% flash.each do |name,msg| %>
+		<%= content_tag :section, msg, :id => "flash_#{name}" %>
+	<% end %>
+	<%= yield %>
+</section>
 </body>
 </html>
