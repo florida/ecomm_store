@@ -1,14 +1,11 @@
 Elmorfstore::Application.routes.draw do
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
   # root :to => "store#index"
   
   namespace :admin do
     resources :orders, :products
   end
   
-  resources :orders, :products, :users, :sessions
+  resources :orders, :products
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
