@@ -1,4 +1,6 @@
 Elmorfstore::Application.routes.draw do
+  get "store/index"
+
 namespace :admin do
   resources :orders, :products
 end
