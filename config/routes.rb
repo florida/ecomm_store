@@ -1,4 +1,6 @@
 Elmorfstore::Application.routes.draw do
+  get "store/index"
+
 #  get "store/index"
 
 root :to => 'store#index'
