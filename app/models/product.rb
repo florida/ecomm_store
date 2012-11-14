@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :name, :price, :stock_no, :image_url
+  attr_accessible :description, :name, :price, :stock_no, :image_url, :available
   has_many :lineitems
   validates :description, :presence => true
   validates :name, :presence => true
@@ -9,7 +9,8 @@ class Product < ActiveRecord::Base
 
 
   def self.available_items
-
+  	find(:all,
+  		 :conditions => { :available => true} )
   end 
 
 end
