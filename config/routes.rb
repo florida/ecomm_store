@@ -1,5 +1,5 @@
 Elmorfstore::Application.routes.draw do
-  get "store/index"
+  match 'store' => 'store#index', :as => 'store', :via => :get
 
 #  get "store/index"
 
