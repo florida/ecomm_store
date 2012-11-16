@@ -14,6 +14,7 @@ class StoreController < ApplicationController
   def show_cart
   	@cart = get_cart
   	@items = @cart.items
+  	render 'shoppingcart'
   end
 
 

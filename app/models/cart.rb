@@ -16,13 +16,13 @@ class Cart
 
   def add_line_item(product)
   	#finds if item is already in the cart
-  	item = @items.find {|i| i.product_id == product.id }
+  	item = @items.find {|i| i.product_id == product.id}
 
   	if item 
   		item.quantiy += 1
   	else
-  		item = LineItem.add_product(product)
-  		@item << item
+  		item = Lineitem.add_product(product)
+  		@items << item
   	end
   	@total_price += product.price
   end
