@@ -19,11 +19,18 @@ class Cart
   	item = @items.find {|i| i.product_id == product.id}
 
   	if item 
-  		item.quantiy += 1
+  		item.quantity += 1
   	else
   		item = Lineitem.add_product(product)
   		@items << item
   	end
   	@total_price += product.price
+  end
+
+
+  def empty_cart_contents!
+    @items = []
+    @total_price = 0.0
+    @taxes = 0.0
   end
 end

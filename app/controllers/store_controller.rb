@@ -17,10 +17,17 @@ class StoreController < ApplicationController
   	render 'shoppingcart'
   end
 
+  def empty_cart
+    @cart = get_cart
+    @cart.empty_cart_contents!
+    flash[:notice] = ' Your cart is now empty'
+    redirect_to store_path
+  end
 
 private
 
   def get_cart
   	session[:cart] ||= Cart.new
   end
+
 end
