@@ -1,0 +1,15 @@
+<section class="product">
+	<header><%= product.name %></header>
+		<section class="product_image">
+			<%= image_tag product.image_url, :width => '20%' if product.image_url.present? %>
+		</section>
+		<section class="product_info">
+			<span class="label">Price</span>
+			<span class="value"><%= product.price %></span>
+		</section>
+	<footer>
+		<%= link_to 'Buy Now', add_to_cart_path(product) %>
+		<% span_label 'Product Name: ' %>
+		
+	</footer>
+</section>
