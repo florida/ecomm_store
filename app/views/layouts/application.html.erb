@@ -44,7 +44,27 @@
 		
 	</footer>
 
+<<<<<<< HEAD
+=======
+<header>
+	<ul>
+		<li><%= link_to 'Orders', admin_orders_path %></li>
+		<li><%= link_to 'Products', admin_products_path %></li>
+		<li></li>
+	</ul>
+	
+	
+</header>
+>>>>>>> 67c8ddd50d72f6ef054cabcf9360d7e6eccf2705
 
+
+
+<section id="container">
+	<% flash.each do |name,msg| %>
+		<%= content_tag :section, msg, :id => "flash_#{name}" %>
+	<% end %>
+	<%= yield %>
+</section>
 </body>
 
 </html>
