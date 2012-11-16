@@ -1,6 +1,6 @@
-<%= form_for [:admin, @order] do |f| %>
+<%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
-    <section id="error_explanation">
+    <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
       <ul>
@@ -8,30 +8,26 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </section>
+    </div>
   <% end %>
 
-  <section class="field">
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
-  </section>
-  <section class="field">
+  </div>
+  <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
-  </section>
-  <section class="field">
+  </div>
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </section>
-  <section class="field">
+  </div>
+  <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
-  </section>
-  <section class="field">
-    <%= f.label :status %>
-    <%= f.select :status, Order::ORDER_STATUS %>
-  </section>
-  <section class="actions">
+  </div>
+  <div class="actions">
     <%= f.submit %>
-  </section>
+  </div>
 <% end %>

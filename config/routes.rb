@@ -1,17 +1,11 @@
 Elmorfstore::Application.routes.draw do
-  match 'store' => 'store#index', :as => 'store', :via => :get
-  match 'shoppingcart' => 'store#show_cart', :as => 'shoppingcart', :via => :get
-  match 'add_to_cart/:id' => 'store#add_to_cart', :as => 'add_to_cart'
-  match 'store' => 'store#empty_cart', :via => :delete
-#  get "store/index"
-
-root :to => 'store#index'
-
-namespace :admin do
+  # root :to => "store#index"
+  
+  namespace :admin do
+    resources :orders, :products
+  end
+  
   resources :orders, :products
-end
-
-resources :orders, :products
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

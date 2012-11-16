@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
   <title>Elmorfstore</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,43 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header class="main">
-		<section id="logo">
-			<img src="/assets/logo.png" alt="Logo" />
-		</section>
-		<nav class="main">
-			<ul>
-				<li><%= link_to 'Home', root_path %></li>
-				<li><%= link_to 'Orders', admin_orders_path %></li>
-				<li><%= link_to 'Products', admin_products_path %></li>
-			</ul>
-		</nav>
-	</header>
 
-	<section id="content">
-		<% if flash[:notice] %>
-	      <section class="notice"><%= flash[:notice] %></section>
-	    <% end %>
-	    <% if flash[:error] %>
-	      <section class="error"><%= flash[:error] %></section>
-	    <% end %>
-		<%= yield %>
-	</section>
-	<section id="footer_amplifier"></section>
-	<footer>
-		<section id="footer_container">
-			<ul>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-			</ul>
-		</section>
-		
-	</footer>
+<header>
+	<ul>
+		<li><%= link_to 'Orders', admin_orders_path %></li>
+		<li><%= link_to 'Products', admin_products_path %></li>
+		<li></li>
+	</ul>
+	
+	
+</header>
 
 
+
+<section id="container">
+	<% flash.each do |name,msg| %>
+		<%= content_tag :section, msg, :id => "flash_#{name}" %>
+	<% end %>
+	<%= yield %>
+</section>
 </body>
-
 </html>
