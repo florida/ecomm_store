@@ -7,5 +7,7 @@
 			<span class="label">Price</span>
 			<span class="value"><%= product.price %></span>
 		</section>
-	<footer><%= link_to 'Buy Now', :action => 'add_to_cart', :id => product %></footer>
+	<footer>
+		<%= link_to 'Buy Now', add_to_cart_path(product) %>
+	</footer>
 </section>

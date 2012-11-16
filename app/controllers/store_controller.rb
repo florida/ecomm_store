@@ -7,7 +7,8 @@ class StoreController < ApplicationController
   	product = Product.find(params[:id])
   	@cart = get_cart
   	@cart.add_line_item(product)
-  	#display the cart
+
+  	redirect_to store_path
   end
 
   def show_cart
