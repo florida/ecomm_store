@@ -1,4 +1,8 @@
 <section>
+
+	<%= render :partial => 'items_in_cart', :collection => @items, :as => 'item' %>
+
+	
 	<%= form_for [:admin, @order] do |f| %>
 		<section class="field">
 			<%= f.label :first_name %>
