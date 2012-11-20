@@ -14,7 +14,17 @@ class StoreController < ApplicationController
   def show_cart
   	@cart = get_cart
   	@items = @cart.items
-  	render 'shoppingcart'
+
+    if @items.empty?
+      redirect_to store_path
+      flash[:notice] = "Your cart is currently empty"
+
+    else 
+      render 'shoppingcart'
+    end
+  	
+
+
   end
 
   def empty_cart
