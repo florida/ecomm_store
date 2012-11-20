@@ -1,0 +1,25 @@
+<section>
+	<%= form_for [:admin, @order] do |f| %>
+		<section class="field">
+			<%= f.label :first_name %>
+			<%= f.text_field :first_name %>
+			<%= f.hidden_field :status, :value => 'Pending' %>
+		</section>
+		<section class="field">
+			<%= f.label :last_name %>
+			<%= f.text_field :last_name %>
+		</section>
+		<section class="field">
+			<%= f.label :email %>
+			<%= f.email_field :email %>
+		</section>
+		<section class="field">
+			<%= f.label :address %>
+			<%= f.text_area :address %>
+		</section>
+		<section class="field">
+			<%= f.submit %>
+		</section>
+
+	<% end %>
+</section>

@@ -24,6 +24,16 @@ class StoreController < ApplicationController
     redirect_to store_path
   end
 
+  def checkout
+    @cart = get_cart
+    @items = @cart.items
+    if @items.empty?
+      redirect_to root_path("There's nothing in your cart")
+    else
+      @order = Order.new
+    end
+  end
+
 private
 
   def get_cart

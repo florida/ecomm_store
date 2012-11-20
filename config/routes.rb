@@ -3,6 +3,7 @@ Elmorfstore::Application.routes.draw do
   match 'shoppingcart' => 'store#show_cart', :as => 'shoppingcart', :via => :get
   match 'add_to_cart/:id' => 'store#add_to_cart', :as => 'add_to_cart'
   match 'store' => 'store#empty_cart', :via => :delete
+  match 'checkout' => 'store#checkout', :as => 'checkout'
 #  get "store/index"
 
 root :to => 'store#index'
