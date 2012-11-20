@@ -34,11 +34,10 @@ class StoreController < ApplicationController
 
   def checkout
     @cart = get_cart
+
     @items = @cart.items
     if @items.empty?
       redirect_to root_path("There's nothing in your cart")
-    else
-      @cart.empty_cart_contents!
     end
   end
 
