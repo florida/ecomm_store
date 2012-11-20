@@ -5,12 +5,12 @@ class Cart
 
   #feature to add... adding line items with quantity
 
-  attr_reader :items, :total_price, :taxes
+  attr_reader :items, :total_price, :taxes, :order
   def initialize
   	@items = []
   	@total_price = 0.0
   	@taxes = 0.0
-    @order = session[:order]
+    @order ||= Order.new
   end
 
 
@@ -37,5 +37,6 @@ class Cart
     @taxes = 0.0
     @order = Order.new
   end
+
 
 end

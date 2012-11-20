@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120040058) do
+ActiveRecord::Schema.define(:version => 20121120043132) do
 
   create_table "lineitems", :force => true do |t|
     t.integer  "product_id"
