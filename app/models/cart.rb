@@ -10,6 +10,7 @@ class Cart
   	@items = []
   	@total_price = 0.0
   	@taxes = 0.0
+    @order = session[:order]
   end
 
 
@@ -21,7 +22,8 @@ class Cart
   	if item 
   		item.quantity += 1
   	else
-  		item = Lineitem.add_product(product)
+  		item = Lineitem.add_product(product, @order)
+
   		@items << item
 
   	end
@@ -33,5 +35,7 @@ class Cart
     @items = []
     @total_price = 0.0
     @taxes = 0.0
+    @order = Order.new
   end
+
 end

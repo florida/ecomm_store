@@ -5,8 +5,8 @@ class Lineitem < ActiveRecord::Base
 
   # # # # next feature, receiving quantity...
 
-  def self.add_product(product)
-  	item = self.new
+  def self.add_product(product, order)
+  	item = order.lineitems.build
   	item.quantity = 1
   	item.product = product
   	#record the price during the sale

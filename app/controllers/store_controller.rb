@@ -5,6 +5,7 @@ class StoreController < ApplicationController
 
   def add_to_cart
   	product = Product.find(params[:id])
+    get_order
   	@cart = get_cart
   	@cart.add_line_item(product)
 
@@ -40,7 +41,8 @@ class StoreController < ApplicationController
     if @items.empty?
       redirect_to root_path("There's nothing in your cart")
     else
-      @order = Order.new
+      @cart.empty_cart_contents!
+      @order = @cart.get_order
     end
   end
 
@@ -50,6 +52,8 @@ private
   	session[:cart] ||= Cart.new
   end
 
-
+  def get_order
+    session[:order] ||= Order.new
+  end 
 
 end
