@@ -30,4 +30,6 @@ private
   	session[:cart] ||= Cart.new
   end
 
+
+
 end

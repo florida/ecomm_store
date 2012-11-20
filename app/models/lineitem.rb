@@ -11,5 +11,6 @@ class Lineitem < ActiveRecord::Base
   	item.product = product
   	#record the price during the sale
   	item.unit_price = product.price
+    item
   end 
 end
