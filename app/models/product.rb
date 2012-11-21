@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   validates :price, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
   validates :stock_no, :numericality => { :only_integer => true, :greater_than_or_equal_to => 0 }
   validates :image_url, :presence => true, :format => { :with => %r{\.(gif|jpe?g|png)$}i }
-
+  belongs_to :category
 
   def self.available_items
   	find(:all,
