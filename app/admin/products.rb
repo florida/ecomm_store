@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+	scope :unavailable
 	index do
 		column "Product Name", :name
 		column :category

@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :name, :price, :stock_no, :image_url, :available
+  attr_accessible :description, :name, :price, :stock_no, :image_url, :available, :category_id
+  scope :unavailable, where(:available => nil || :available.empty?)
   has_many :lineitems
   validates :description, :presence => true
   validates :name, :presence => true
