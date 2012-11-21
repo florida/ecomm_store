@@ -1,6 +1,9 @@
 Elmorfstore::Application.routes.draw do
-  get "users/new"
-
+  get "log_out" => "sessions#destroy", :as => "log_out"
+get "log_in" => "sessions#new", :as => "log_in"
+get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+  resources :sessions
   match 'store' => 'store#index', :as => 'store', :via => :get
   match 'shoppingcart' => 'store#show_cart', :as => 'shoppingcart', :via => :get
   match 'add_to_cart/:id' => 'store#add_to_cart', :as => 'add_to_cart'

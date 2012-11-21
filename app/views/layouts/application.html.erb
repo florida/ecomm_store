@@ -19,6 +19,14 @@
 				<li><%= link_to 'Shopping Cart', shoppingcart_path %></li>
 			</ul>
 		</nav>
+		<% if current_user %>
+			Logged in as <%= current_user.email %>
+			<%= link_to "Log out", log_out_path %>
+		<% else %>
+			<%= link_to "Sign up", sign_up_path %>
+			<%= link_to "Sign in", log_in_path %>
+		<% end %>
+
 	</header>
 
 	<section id="content">
