@@ -13,4 +13,11 @@ class Lineitem < ActiveRecord::Base
   	item.unit_price = product.price
     item
   end 
+
+  def self.add_from_cart_item(cart_item)
+    lineitem = self.new
+    lineitem.product = cart_item.product
+    lineitem.quantity = cart_item.quantity
+    lineitem.unit_price = cart_item.price
+  end
 end

@@ -7,4 +7,12 @@ class Order < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates_inclusion_of :status, :in => ORDER_STATUS
+
+  def add_products_from_cart(cart)
+  	cart.items.each do |item|
+  		lineitem = Lineitem.add_from_cart_item(item)
+  		lineitems << li
+  	end
+  end
+
 end

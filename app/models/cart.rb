@@ -8,34 +8,24 @@ class Cart
   attr_reader :items, :total_price, :taxes, :order
   def initialize
   	@items = []
-  	@total_price = 0.0
-  	@taxes = 0.0
-    @order ||= Order.new
   end
 
 
-
-  def add_line_item(product)
+  def add_cart_item(product)
   	#finds if item is already in the cart
-  	item = @items.find {|i| i.product_id == product.id}
+  	item = @items.find {|item| item.product == product }
 
   	if item 
-  		item.quantity += 1
+  		item.increment_quantity
   	else
-  		item = Lineitem.add_product(product, @order)
-
+  		item = Cart::CartItem.new(product)
   		@items << item
-
   	end
-  	@total_price += product.price
+    item
   end
-
 
   def empty_cart_contents!
     @items = []
-    @total_price = 0.0
-    @taxes = 0.0
-    @order = Order.new
   end
 
 
