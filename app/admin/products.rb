@@ -11,11 +11,9 @@ ActiveAdmin.register Product do
 		
 		end
 		column :image do |product|
-			image_tag product.image
+			image_tag product.image, :width => '50%'
 		end
-		column "Image", :image_url do |product|
-			image_tag product.image_url
-		end
+
 		default_actions
 	end
 
