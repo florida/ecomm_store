@@ -1,7 +1,7 @@
 class StoreController < ApplicationController
   def index
   	@products = Product.available_items
-    end
+  end
 
   def add_to_cart
   	product = Product.find(params[:id])

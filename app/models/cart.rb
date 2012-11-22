@@ -5,12 +5,9 @@ class Cart
 
   #feature to add... adding line items with quantity
 
-  attr_reader :items, :total_price, :hst, :gst, :pst, :order
+  attr_reader :items, :total_price, :order
   def initialize
   	@items = []
-    @hst
-    @pst
-    @gst
   end
 
 
@@ -29,12 +26,6 @@ class Cart
 
   def empty_cart_contents!
     @items = []
-  end
-
-  def add_taxes(province)
-    @hst = province.hst
-    @pst = province.pst
-    @gst = province.gst
   end
 
 
