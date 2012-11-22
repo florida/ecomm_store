@@ -23,7 +23,10 @@
 			<%= f.label :address %>
 			<%= f.text_area :address %>
 		</section>
+	<% else %>
+		<%= render :partial => 'user_checkout_info', :object => @user, :as => 'user' %>
 	<% end%>
+
 		<section class="field">
 			<%= f.submit %>
 		</section>

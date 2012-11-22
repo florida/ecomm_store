@@ -1,6 +1,6 @@
 <section class="items_in_cart">
 	<section class="item_in_cart">
-		<%= image_tag item.product.image, :class=> "item_image" if item.product.image_url.present? %>
+		<%= image_tag item.product.image, :class => "item_image", :width => '20%' if item.product.image.present? %>
 		<%= span_label 'Product Name:' %>
 		<%= span_value item.product.name %>
 		<%= span_label 'Quantity:' %>

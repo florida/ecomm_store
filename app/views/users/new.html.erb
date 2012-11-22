@@ -28,6 +28,10 @@
 		<%= f.text_field :email %>
 	</section>
 
+	<div class="field">
+    	<%= f.label :province_id %><br />
+    	<%= f.collection_select :province_id, @provinces, :id, :name %>
+  	</div>
 	<section class="field">
 		<%= f.label :password %>
 		<%= f.password_field :password %>

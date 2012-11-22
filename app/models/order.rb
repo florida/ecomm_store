@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   ORDER_STATUS = ["Shipped", "Pending", "Order Requested"] 
-  attr_accessible :address, :email, :first_name, :last_name, :status
+  attr_accessible :address, :email, :first_name, :last_name, :status, :gst, :hst, :pst
   has_many :lineitems
   validates :address, :presence => true
   validates :email, :presence => true, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
@@ -11,8 +11,10 @@ class Order < ActiveRecord::Base
   def add_products_from_cart(cart)
   	cart.items.each do |item|
   		lineitem = Lineitem.add_from_cart_item(item)
+
   		lineitems << lineitem
   	end
   end
+
 
 end

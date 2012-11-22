@@ -24,9 +24,19 @@ class StoreController < ApplicationController
   end
 
   def save_order
-    @order = Order.new(params[:order])
+    user = ""
+    if session['user_id'].present?
+      user = User.find(session[:user_id])
+      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
+    else
+      @order = Order.new(params[:order])
+    end
     @cart = get_cart
     @order.add_products_from_cart(@cart)
+    @order.hst = user.province.hst
+    @order.gst = user.province.gst
+    @order.pst = user.province.pst
+    
     if @order.save
       session[:cart] = nil
       redirect_to root_path
@@ -44,13 +54,12 @@ class StoreController < ApplicationController
   end
 
   def checkout
-    @cart = get_cart
     if session['user_id'].present?
-      user = User.find(session['user_id']) 
-      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name )
-    else
-      @order = Order.new
+      @user = User.find(session[:user_id]) 
     end
+
+    @cart = get_cart
+    @order = Order.new
 
     @items = @cart.items
     if @items.empty?
