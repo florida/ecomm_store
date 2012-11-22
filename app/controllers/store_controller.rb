@@ -1,7 +1,7 @@
 class StoreController < ApplicationController
   def index
   	@products = Product.available_items
-  end
+    end
 
   def add_to_cart
   	product = Product.find(params[:id])
@@ -45,7 +45,13 @@ class StoreController < ApplicationController
 
   def checkout
     @cart = get_cart
-    @order = Order.new
+    if session['user_id'].present?
+      user = User.find(session['user_id']) 
+      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name )
+    else
+      @order = Order.new
+    end
+
     @items = @cart.items
     if @items.empty?
       redirect_to root_path("There's nothing in your cart")

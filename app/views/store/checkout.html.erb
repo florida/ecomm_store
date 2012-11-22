@@ -3,7 +3,9 @@
 	<%= render :partial => 'items_in_cart', :collection => @items, :as => 'item' %>
 
 
+
 	<%= form_for @order, :url => save_order_path do |f| %>
+	<% if !session['user_id'].present? %>
 		<section class="field">
 			<%= f.label :first_name %>
 			<%= f.text_field :first_name %>
@@ -21,9 +23,11 @@
 			<%= f.label :address %>
 			<%= f.text_area :address %>
 		</section>
+	<% end%>
 		<section class="field">
 			<%= f.submit %>
 		</section>
-
+	
 	<% end %>
+
 </section>
