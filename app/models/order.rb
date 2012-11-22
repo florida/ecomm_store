@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   def add_products_from_cart(cart)
   	cart.items.each do |item|
   		lineitem = Lineitem.add_from_cart_item(item)
-  		lineitems << li
+  		lineitems << lineitem
   	end
   end
 

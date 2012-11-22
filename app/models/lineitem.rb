@@ -19,5 +19,6 @@ class Lineitem < ActiveRecord::Base
     lineitem.product = cart_item.product
     lineitem.quantity = cart_item.quantity
     lineitem.unit_price = cart_item.price
+    lineitem
   end
 end

@@ -18,7 +18,7 @@ class Cart
   	if item 
   		item.increment_quantity
   	else
-  		item = Cart::CartItem.new(product)
+  		item = CartItem.new(product)
   		@items << item
   	end
     item
