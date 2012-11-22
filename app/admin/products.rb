@@ -8,8 +8,27 @@ ActiveAdmin.register Product do
 			div :class => "price" do
 				number_to_currency product.price
 			end
-			
+		
+		end
+		column :image do |product|
+			image_tag product.image
+		end
+		column "Image", :image_url do |product|
+			image_tag product.image_url
 		end
 		default_actions
+	end
+
+	form :html => { :enctype => "multipart/form-data" } do |f|
+		f.inputs "Edit" do
+			f.input :category
+			f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.url(:medium))
+			f.input :name
+			f.input :description
+			f.input :price
+			f.input :stock_no
+			f.input :available
+		end
+		f.buttons
 	end
 end

@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :description, :name, :price, :stock_no, :image_url, :available, :category_id, :image
+
   scope :unavailable, where(:available => nil || :available.empty?)
   has_many :lineitems
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
