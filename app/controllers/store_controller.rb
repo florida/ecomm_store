@@ -12,6 +12,8 @@ class StoreController < ApplicationController
   end
 
   def show_cart
+
+    @provinces = Province.all
   	@cart = get_cart
   	@items = @cart.items
     if @items.empty?
@@ -23,22 +25,36 @@ class StoreController < ApplicationController
 
   end
 
-  def save_order
+  def confirm_order
+
     user = ""
+    @provinces = Province.all
     if session['user_id'].present?
       user = User.find(session[:user_id])
       @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
+      @order.hst = user.province.hst
+      @order.gst = user.province.gst
+      @order.pst = user.province.pst
     else
-      @order = Order.new(params[:order])
+      user = User.new(params[:user])
+      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
+      @order.hst = user.province.hst
+      @order.gst = user.province.gst
+      @order.pst = user.province.pst
     end
+    session[:order] = @order
     @cart = get_cart
+    @items = @cart.items
+  end
+
+  def save_order
+    @cart = get_cart
+
+    @order = session[:order]
     @order.add_products_from_cart(@cart)
-    @order.hst = user.province.hst
-    @order.gst = user.province.gst
-    @order.pst = user.province.pst
-    
     if @order.save
       session[:cart] = nil
+      session[:order] = nil
       redirect_to root_path
       flash[:notice] = "Your order has been placed"
     else
@@ -54,12 +70,14 @@ class StoreController < ApplicationController
   end
 
   def checkout
+    @user = User.new 
     if session['user_id'].present?
       @user = User.find(session[:user_id]) 
     end
 
     @cart = get_cart
-    @order = Order.new
+    
+    @provinces = Province.all
 
     @items = @cart.items
     if @items.empty?

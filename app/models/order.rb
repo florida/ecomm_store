@@ -16,5 +16,10 @@ class Order < ActiveRecord::Base
   	end
   end
 
+  def add_taxes(province)
+    hst = province.hst
+    gst = province.gst
+    pst = province.pst
+  end
 
 end

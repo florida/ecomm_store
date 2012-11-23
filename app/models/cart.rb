@@ -8,6 +8,7 @@ class Cart
   attr_reader :items, :total_price, :order
   def initialize
   	@items = []
+    @total_price = 0.0
   end
 
 
@@ -19,13 +20,16 @@ class Cart
   		item.increment_quantity
   	else
   		item = CartItem.new(product)
+
   		@items << item
   	end
+    @total_price += item.price
     item
   end
 
   def empty_cart_contents!
     @items = []
+    @total_price = 0.0
   end
 
 

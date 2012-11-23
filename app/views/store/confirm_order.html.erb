@@ -1,0 +1,8 @@
+<section class="confirm_order">
+	<%= @order.gst %>
+	<%= @order.pst %>
+	<%= @order.hst %>
+	<%= render :partial => 'items_in_cart', :collection => @items, :as => 'item' %>
+	TOTAL PRICE <%= @cart.total_price %>
+	<%= link_to 'Confirm Order', save_order_path %>
+</section>
