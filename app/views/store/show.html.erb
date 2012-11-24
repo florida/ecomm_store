@@ -1,5 +1,27 @@
 <section class="product_show">
+	
 	<section class="product_image">
-		<%= image_tag %>
+		<%= image_tag @product.image %>
 	</section>
+	<section class="product_info">
+		<header>
+		<%= @product.name %>
+		</header>
+		<section class="info">
+			<span class="label">Price: </span>
+			<span class="value"><%= @product.price %></span>
+		</section>
+		
+		<section class="info">
+			<span class="label">Description: </span>
+			<span class="value"><%= @product.description %></span>
+		</section>
+		<section class="info">
+			<span class="label">Category: </span>
+			<span class="value"><%= @product.category.name %></span>
+		</section>
+		<footer><%= link_to 'Buy Now', add_to_cart_path(@product) %></footer>
+	</section>
+
+	
 </section>

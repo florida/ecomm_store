@@ -1,3 +1,124 @@
 // Place all the styles related to the store controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#products{
+	width: 99%;
+	margin: 0 auto;
+	display: block;
+
+}
+
+section.product{
+	background-color: rgba(0,0,0,0.7);
+	float: left;
+	margin: 10px;
+	width: 22%;
+	border-radius: 10px;
+	padding: 5px;
+	min-height: 500px;
+	position: relative;
+	header{
+		a{
+			text-decoration: none;
+			color: #a1895e;
+			font-size: 20px;
+			text-shadow: 0px 0px 5px #000;
+			margin-bottom: 10px;
+			display: block;
+		}
+	}
+
+	section.product_image{
+		background: #FFF;
+		min-height: 300px;
+		border-radius: 10px;
+		padding: 10px;
+	}
+	section.product_info{
+		font-size: 20px;
+		padding: 10px;
+		span.label{
+			color: #000;
+		}
+		span.value{
+			color: #FFF;
+		}
+	}
+	footer{
+		position: absolute;
+		bottom: 20px;
+		right: 10px;
+		a{
+			text-decoration: none;
+			color: #FFF;
+			float: right;
+			padding: 10px;
+			background-color: #4f0000;
+			border-radius: 10px;
+		}
+	}
+	img {
+		width: 95%;
+		display: block;
+		margin: 0 auto;
+		border-radius: 10px;
+		vertical-align: center;
+		}
+
+}
+
+section.product_show{
+	overflow: auto;
+	background-color: rgba(0,0,0,0.6);
+	margin: 20px;
+	padding: 10px;
+	img{
+		float: left;
+		width: 30%;
+	}
+
+	section.product_info{
+		float: left;
+		header{
+		color: #fff;
+		display: block;
+		position: relative;
+		width: 100%;
+		font-size: 30px;
+		letter-spacing: 3px;
+		word-spacing: 5px;
+		padding: 10px;
+		width: auto;
+		text-transform: uppercase;	
+		}
+		footer{
+			bottom: 20px;
+				a{
+					text-decoration: none;
+					color: #FFF;
+					float: right;
+					padding: 10px;
+					background-color: #4f0000;
+					border-radius: 10px;
+				}
+		}	
+	}
+
+	section.info{
+		word-wrap: break-word;
+		padding: 10px;
+		font-size: 25px;
+		span.label{
+			color: #e1b465;
+		}
+		span.value{
+			color: #000;
+		}
+		
+
+	}
+
+
+}
+

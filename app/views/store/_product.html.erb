@@ -1,15 +1,15 @@
 <section class="product">
-	<header><%= product.name %></header>
+	<header><%= link_to product.name, show_product_path(product) %></header>
 		<section class="product_image">
-			<%= image_tag product.image, :width => '20%' if product.image.present? %>
+			<%= image_tag product.image if product.image.present? %>
 		</section>
 		<section class="product_info">
-			<span class="label">Price</span>
+			<span class="label">Price: </span>
 			<span class="value"><%= product.price %></span>
+
 		</section>
 	<footer>
 		<%= link_to 'Buy Now', add_to_cart_path(product) %>
-		<% span_label 'Product Name: ' %>
 		
 	</footer>
 </section>

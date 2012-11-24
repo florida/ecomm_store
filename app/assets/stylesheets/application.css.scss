@@ -10,6 +10,7 @@
  *
  *= require_self
  *x require_tree .
+ *= require store
  */
 
  $footer_link_background: #d5d5d5;
@@ -31,7 +32,7 @@
 
  body{ 
  	background-image: url('bg.png');
- 	width: 80%;
+ 	width: 70%;
  	margin: 0 auto;
  	font-family: "Arial Narrow", sans-serif;
  }
@@ -106,5 +107,7 @@ footer {
 	}
 }
 
-
+#content{
+	overflow: auto;
+}
 

@@ -11,6 +11,10 @@ class StoreController < ApplicationController
   	redirect_to store_path
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def show_cart
 
     @provinces = Province.all

@@ -14,7 +14,7 @@ get "sign_up" => "users#new", :as => "sign_up"
   match 'store' => 'store#empty_cart', :via => :delete
   match 'checkout' => 'store#checkout', :as => 'checkout'
   match 'saveorder' => 'store#save_order', :as => 'save_order', :via => :get
-
+  match 'store/product/:id' => 'store#show', :as => 'show_product', :via => :get
   match 'confirm' => 'store#confirm_order', :as => 'confirm_order', :via => :post
   match 'confirm' => 'store#confirm_order', :as => 'confirm_order', :via => :put
 #  get "store/index"
