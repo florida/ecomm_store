@@ -32,5 +32,16 @@ class Cart
     @total_price = 0.0
   end
 
+  def grand_total taxes
+    pst_total = taxes[:pst] * @total_price
+    hst_total = taxes[:hst] * @total_price
+    gst_total = taxes[:gst] * @total_price
+
+    pst_total + hst_total+ gst_total + @total_price
+  end
+
+  def total_with_tax tax
+    @total_price * tax
+  end
 
 end

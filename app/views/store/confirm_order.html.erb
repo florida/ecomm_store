@@ -1,8 +1,40 @@
 <section class="confirm_order">
-	<%= @order.gst %>
-	<%= @order.pst %>
-	<%= @order.hst %>
+
 	<%= render :partial => 'items_in_cart', :collection => @items, :as => 'item' %>
-	TOTAL PRICE <%= @cart.total_price %>
+	
+	<section id="confirm_summary">
+		<% unless @order.gst.zero? %>
+			<section class="summary_info">
+				<%= span_label 'GST' %>
+				<%= span_value "#{@order.gst} #{number_to_currency(@cart.total_with_tax @order.gst)}" %>
+			</section>	
+		<% end %>
+
+		<% unless @order.pst.zero? %>
+			<section class="summary_info">
+				<%= span_label 'PST' %>
+				<%= span_value "#{@order.pst} #{number_to_currency(@cart.total_with_tax @order.pst)}" %>
+			</section>
+		<% end %>
+		<% unless @order.hst.zero? %>
+			<section class="summary_info">
+				<%= span_label 'HST' %>
+				<%= span_value "#{@order.hst} #{number_to_currency(@cart.total_with_tax @order.hst)}" %>
+			</section>
+		<% end %>
+		<section class="summary_info">
+				<%= span_label 'Sub-total: '%>
+				<%= span_value number_to_currency(@cart.total_price) %>
+		</section>
+
+		<section class="summary_info">
+				<%= span_label 'grand-total: '%>
+				<%= span_value number_to_currency(@grand_total) %>
+		</section>
+
+	</section>
+
 	<%= link_to 'Confirm Order', save_order_path %>
+
+
 </section>

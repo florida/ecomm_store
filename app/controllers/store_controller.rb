@@ -30,25 +30,25 @@ class StoreController < ApplicationController
   end
 
   def confirm_order
-
     user = ""
     @provinces = Province.all
     if session['user_id'].present?
       user = User.find(session[:user_id])
       @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
-      @order.hst = user.province.hst
-      @order.gst = user.province.gst
-      @order.pst = user.province.pst
+      add_taxes(@order, user.province)
+
+
     else
       user = User.new(params[:user])
       @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
-      @order.hst = user.province.hst
-      @order.gst = user.province.gst
-      @order.pst = user.province.pst
+      add_taxes(@order, user.province)
     end
     session[:order] = @order
     @cart = get_cart
     @items = @cart.items
+    taxes = { pst: @order.pst, gst: @order.gst, hst: @order.hst }
+    @grand_total = @cart.grand_total taxes
+
   end
 
   def save_order
@@ -93,6 +93,12 @@ private
 
   def get_cart
   	session[:cart] ||= Cart.new
+  end
+
+  def add_taxes(order, province)
+    order.hst = province.hst
+    order.gst = province.gst
+    order.pst = province.pst
   end
 
 
