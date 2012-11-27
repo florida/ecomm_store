@@ -48,6 +48,7 @@ class StoreController < ApplicationController
     @items = @cart.items
     taxes = { pst: @order.pst, gst: @order.gst, hst: @order.hst }
     @grand_total = @cart.grand_total taxes
+    
 
   end
 

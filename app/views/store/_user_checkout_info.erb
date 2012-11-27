@@ -1,7 +1,18 @@
 <section class="user_checkout_information">
-	<%= span_label 'Name:' %>
-	<%= span_value user.first_name+ " " +user.last_name %>
-	<%= span_label 'Address: '%>
-	<%= span_value user.address + " " + user.province.name  %>
+
+	<section class="user_info">
+		<%= span_label 'Name:' %>
+		<%= span_value user.first_name+ " " +user.last_name %>
+	</section>
+
+	<section class="user_info">
+		<%= span_label 'Address: '%>
+		<%= span_value user.address + " " + user.province.name  %>
+	</section>
+
+	<section class="user_info">
+		<%= span_label 'Email Address: '%>
+		<%= span_value user.email  %>
+	</section>
 	
 </section>
