@@ -1,4 +1,5 @@
 Elmorfstore::Application.routes.draw do
+
   get "page/show"
 
   ActiveAdmin.routes(self)

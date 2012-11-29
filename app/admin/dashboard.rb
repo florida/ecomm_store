@@ -20,6 +20,51 @@ ActiveAdmin.register_page "Dashboard" do
         
     end
 
+    
+    div :class => "panel"  do
+        h3 {"Recent Customers"}
+
+        div :class => "panel_contents" do
+            table_for Order.order("created_at desc").limit(10) do
+                column :first_name do |order|
+                    link_to order.first_name, [:admin, order]
+                end 
+
+                column :last_name do |order|
+                    link_to order.last_name, [:admin, order]
+                end 
+
+                column "Ordered On", :created_at
+
+            end
+            strong { link_to "View All Sold Products", "admin_orders_path" }
+        end
+    end
+    
+
+    div :class => "panel"  do
+        h3 {"Newest Registered Customers"}
+
+        div :class => "panel_contents" do
+            table_for User.order("created_at desc").limit(10) do
+                column :first_name do |order|
+                    link_to order.first_name, [:admin, order]
+                end 
+
+                column :last_name do |order|
+                    link_to order.last_name, [:admin, order]
+                end 
+
+                column "Signed Up On", :created_at
+
+            end
+            strong { link_to "View All Users", "admin_users_path" }
+        end
+    end
+
+
+
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
