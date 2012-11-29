@@ -1,4 +1,6 @@
 Elmorfstore::Application.routes.draw do
+  get "page/show"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -17,6 +19,7 @@ get "sign_up" => "users#new", :as => "sign_up"
   match 'store/product/:id' => 'store#show', :as => 'show_product', :via => :get
   match 'confirm' => 'store#confirm_order', :as => 'confirm_order', :via => :post
   match 'confirm' => 'store#confirm_order', :as => 'confirm_order', :via => :put
+  match 'pages/:id/:permalink' => 'page#show', :as => 'page', :via => :get
 #  get "store/index"
 
 root :to => 'store#index'

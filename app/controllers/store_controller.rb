@@ -1,7 +1,12 @@
 class StoreController < ApplicationController
+
+  
+  
   def index
   	@products = Product.available_items
   end
+
+  
 
   def add_to_cart
   	product = Product.find(params[:id])
@@ -29,19 +34,22 @@ class StoreController < ApplicationController
 
   end
 
+
+
   def confirm_order
     user = ""
+
     @provinces = Province.all
     if session['user_id'].present?
       user = User.find(session[:user_id])
       @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
       add_taxes(@order, user.province)
-
-
     else
-      user = User.new(params[:user])
-      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
-      add_taxes(@order, user.province)
+    user = User.new(params[:user])
+        @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
+        add_taxes(@order, user.province)
+
+      
     end
     session[:order] = @order
     @cart = get_cart

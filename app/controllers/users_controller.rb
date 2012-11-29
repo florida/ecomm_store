@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @provinces = Province.all
   	@user = User.new(params[:user])
   	if @user.save
-      #flash[:notice] => "Signed Up!"
-  		redirect_to root_url
+  		redirect_to root_url, :notice => "Signed Up!"
   		
   	else
   		render "new"

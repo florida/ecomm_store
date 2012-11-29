@@ -16,7 +16,15 @@
 			<nav class="main">
 				<ul>
 					<li><%= link_to 'Home', root_path %></li>
+
+					<% unless @pages.empty? %>
+						<% @pages.each do |page| %>
+							<li><%= link_to page.title, "pages/#{page.id}/#{page.permalink}" %></li>
+						<% end %>
+					<% end %>
+
 					<li><%= link_to 'Shopping Cart', shoppingcart_path %></li>
+					<li><%= link_to 'Admin', admin_root_path %></li>
 				</ul>
 			</nav>
 			<nav class="sub">

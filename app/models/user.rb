@@ -3,7 +3,14 @@ class User < ActiveRecord::Base
   
   attr_accessor :password
   before_save :encrypt_password
-  
+
+  validates :email, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :address, :presence => true
+  validates :province, :presence => true
+
+
   belongs_to :province
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
