@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_user 
   private
 
-  before_filter :get_pages
+  before_filter :get_pages, :get_footer_links
 
   def get_pages
     @pages = Page.all
+  end
+
+  def get_footer_links
+  	@footer_links = FooterLink.all
   end
 
   def current_user

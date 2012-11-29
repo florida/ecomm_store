@@ -54,11 +54,11 @@
 		<section id="footer_amplifier"></section>
 		<section id="footer_container">
 			<ul>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
-				<li><%= link_to 'Link', '#'%></li>
+				<% unless @footer_links.empty? %>
+						<% @footer_links.each do |link| %>
+							<li><%= link_to link.name, "#{link.url}" %></li>
+						<% end %>
+					<% end %>
 			</ul>
 		</section>
 		
