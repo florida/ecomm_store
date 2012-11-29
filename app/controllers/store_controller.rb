@@ -1,14 +1,18 @@
 class StoreController < ApplicationController
 
+  before_filter :instantiate_cart, :only => [:add_to_cart, :show_cart, :confirm_order, :save_order, :empty_cart, :checkout]
+
   def index
   	@products = Product.available_items
   end
 
+  def instantiate_cart
+    @cart = get_cart
+  end
+
   def add_to_cart
   	product = Product.find(params[:id])
-  	@cart = get_cart
   	@cart.add_cart_item(product)
-
   	redirect_to store_path
   end
 
@@ -17,9 +21,6 @@ class StoreController < ApplicationController
   end
 
   def show_cart
-
-    @provinces = Province.all
-  	@cart = get_cart
   	@items = @cart.items
     if @items.empty?
       redirect_to store_path
@@ -30,34 +31,35 @@ class StoreController < ApplicationController
 
   end
 
-
-
   def confirm_order
-    user = ""
-
     @provinces = Province.all
-    if session['user_id'].present?
-      user = User.find(session[:user_id])
-      @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
-      add_taxes(@order, user.province)
-    else
-    user = User.new(params[:user])
-        @order = Order.new(:first_name => user.first_name, :last_name => user.last_name, :status => "Pending", :email => user.email, :address => user.address)
-        add_taxes(@order, user.province)
 
-      
+    if session['user_id'].present?
+      @user = User.find(session[:user_id])
+      @order = Order.new(:first_name => @user.first_name, :last_name => @user.last_name, :status => "Pending", :email => @user.email, :address => @user.address)
+      add_taxes(@order, @user.province)
+    else
+      @user = User.new(params[:user])
+      if @user.valid?
+        @order = Order.new(:first_name => @user.first_name, :last_name => @user.last_name, :status => "Pending", :email => @user.email, :address => @user.address)
+        add_taxes(@order, @user.province)
+      else 
+        render 'checkout'
+      end
     end
+
     session[:order] = @order
-    @cart = get_cart
     @items = @cart.items
-    taxes = { pst: @order.pst, gst: @order.gst, hst: @order.hst }
-    @grand_total = @cart.grand_total taxes
+
+    if @order
+      taxes = { pst: @order.pst, gst: @order.gst, hst: @order.hst }
+      @grand_total = @cart.grand_total taxes
+    end
     
 
   end
 
   def save_order
-    @cart = get_cart
 
     @order = session[:order]
     @order.add_products_from_cart(@cart)
@@ -72,7 +74,6 @@ class StoreController < ApplicationController
   end
 
   def empty_cart
-    @cart = get_cart
     @cart.empty_cart_contents!
     flash[:notice] = ' Your cart is now empty'
     redirect_to store_path
@@ -83,8 +84,6 @@ class StoreController < ApplicationController
     if session['user_id'].present?
       @user = User.find(session[:user_id]) 
     end
-
-    @cart = get_cart
     
     @provinces = Province.all
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Elmorfstore</title>
+  <title>Elmorfstore - <%= yield :title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -19,7 +19,7 @@
 
 					<% unless @pages.empty? %>
 						<% @pages.each do |page| %>
-							<li><%= link_to page.title, "pages/#{page.id}/#{page.permalink}" %></li>
+							<li><%= link_to page.title, "/pages/#{page.id}/#{page.permalink}" %></li>
 						<% end %>
 					<% end %>
 
@@ -48,9 +48,9 @@
 			<%= yield %>
 		</section>
 	</section>
-	<section id="clear_footer">
+	<section id="clear_footer"></section>
 	
-	<footer>
+	<footer class="main">
 		<section id="footer_amplifier"></section>
 		<section id="footer_container">
 			<ul>

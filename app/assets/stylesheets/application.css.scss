@@ -12,7 +12,8 @@
  *x require_tree .
  *= require store
  *= require sessions
-  *= require users
+ *= require users
+ *= require page
  */
 
  $footer_link_background: #d5d5d5;
@@ -23,7 +24,6 @@
  	background-color: $footer_link_background;
 	padding: 20px;
 	height: 70px;
-	width: 70px;
 	border-radius: 70px;
  }
  * { 
@@ -117,7 +117,7 @@ section#footer_amplifier {
 	clear: both;
 }
 
-footer {
+footer.main {
 	font-color: #fff;
 	height: 150px;
 	section#footer_container{

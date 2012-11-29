@@ -1,2 +1,10 @@
-<h1><%= @page.title %></h1>
-<p><%= @page.content %></p>
+<section class="page">
+	<article>
+		<header><%= @page.title %></header>
+		<section class="content">
+			<%= @page.content %>
+		</section>
+
+		<footer>Created At: <%= @page.created_at %> | Updated At: <%= @page.created_at %></footer>
+	</article>	
+</section>
