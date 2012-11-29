@@ -1,4 +1,4 @@
-<section>
+<section id="shoppingcart">
 
 	<%= render :partial => 'items_in_cart', :collection => @items, :as => 'item' %>
 
@@ -23,14 +23,14 @@
 				<%= f.text_field :address %>
 			</section>
 			<section class="field">
-		    	<%= f.label :province_id %><br />
+		    	<%= f.label :province_id %>
 		    	<%= f.collection_select :province_id, @provinces, :id, :name %>
 	  		</section>
 		<% else %>
 		<%= render :partial => 'user_checkout_info', :object => @user, :as => 'user' %>
 	<% end%>
 		<section class="field">
-			<%= f.submit 'Place Order' %>
+			<%= submit_tag 'Place Order', :id => "submit" %>
 		</section>
 	
 	<% end %>

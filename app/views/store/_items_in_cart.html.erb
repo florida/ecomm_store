@@ -1,11 +1,23 @@
 <section class="items_in_cart">
 	<section class="item_in_cart">
-		<%= image_tag item.product.image, :class => "item_image", :width => '20%' if item.product.image.present? %>
-		<%= span_label 'Product Name:' %>
-		<%= span_value item.product.name %>
-		<%= span_label 'Quantity:' %>
-		<%= span_value item.quantity %>
-		<%= span_label 'Price: ' %>
-		<%= span_value number_to_currency(item.price) %>
+		<section class="cart_item_image">
+			<%= image_tag item.product.image, :class => "item_image" if item.product.image.present? %>
+		</section>
+		<section class="cart_item_information">
+			<section class="item_info">
+				<%= span_label 'Product Name:' %>
+				<%= span_value item.product.name %>
+			</section>
+			<section class="item_info">
+				<%= span_label 'Quantity:' %>
+				<%= span_value item.quantity %>
+			</section>
+			<section class="item_info">
+				<%= span_label 'Price: ' %>
+				<%= span_value number_to_currency(item.price) %>
+			</section>
+		
+		</section>
+		
 	</section>	
 </section>

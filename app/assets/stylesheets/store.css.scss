@@ -15,7 +15,7 @@ section.product{
 	margin: 10px;
 	width: 22%;
 	border-radius: 10px;
-	padding: 5px;
+	padding: 10px;
 	min-height: 500px;
 	position: relative;
 	header{
@@ -45,10 +45,11 @@ section.product{
 			color: #FFF;
 		}
 	}
-	footer{
-		position: absolute;
-		bottom: 20px;
+	footer.product_buy{
 		right: 10px;
+		bottom: 20px;
+		position: absolute;
+		height: 30px;
 		a{
 			text-decoration: none;
 			color: #FFF;
@@ -119,6 +120,167 @@ section.product_show{
 
 	}
 
+}
+
+/*CHECKOUT*/
+
+header.shoppingcart{
+	h1{
+		background-color: #4F0000;
+		margin-top: 10px;
+		padding: 10px;
+		color: #FFF;
+	}
+}
+
+section#shoppingcart{
+	background-color: rgba(0,0,0,0.5);
+	overflow: auto;
+	padding: 10px;
+
+	section.items_in_cart{
+		padding: 10px;
+		overflow: auto;
+		section.cart_item_image{
+			float: left;
+			display: inline-block;
+			width: 20%;
+			img{
+				width: 100%;
+			}
+
+		}
+		section.cart_item_information{
+			padding: 10px;
+			float: left;
+			span{
+				font-size: 20px;
+				word-spacing: 3px;
+				letter-spacing: 1px;
+			}
+			section.item_info{
+				padding: 10px;
+			}
+
+			span.label{
+				color: #4F0000;
+
+				font-weight: bold;
+
+
+			}
+		}
+
+	}
+	section.items_in_cart:nth-child(even){
+		background: rgba(255,255,255,0.5);
+	}
+
+	section.items_in_cart:nth-child(odd){
+		background: rgba(70,70,70,0.5);
+		span.value{
+			color: #fff;
+			word-spacing: 3px;
+			letter-spacing: 2px;
+		}
+	}
+
+
+	section.shopping_cart_summary{
+		section.summary_info{
+			padding: 10px;
+			float: right;
+			clear:both;
+
+			span{
+				font-size: 25px;
+				font-weight: bold;
+			}
+
+			span.label{
+				color: #4F0000;
+			}
+			span.value{
+				color: #FFFFFF;
+			}
+		}
+
+	}
+
+	section.checkoutlinks{
+		float: right;
+		clear: both;
+		nav{
+			ul{
+				li{
+					padding: 10px;
+					display: inline;
+					a{
+						font-size: 20px;
+						text-decoration: none;
+						color: #FFF;
+						float: right;
+						padding: 10px;
+						margin: 10px;
+						background-color: #4f0000;
+						border-radius: 10px;
+					}	
+				}
+			}
+		}
+	}
+
+/*Checkout*/
+
+
+
+/* Confirm order */
+
+	section#confirm_summary{
+		float: right;
+		padding: 10px;
+
+		section.summary_info{
+			padding: 10px;
+			float: right;
+			clear:both;
+
+			span{
+				font-size: 25px;
+			}
+
+			span.label{
+				color: #4F0000;
+			}
+			span.value{
+				color: #FFFFFF;
+			}
+		}
+	}
+
+	section.confirm_link{
+		float: right;
+		clear: both;
+		padding: 10px;
+
+		a{
+			font-size: 20px;
+			text-decoration: none;
+			color: #FFF;
+			float: right;
+			padding: 10px;
+			margin: 10px;
+			background-color: #4f0000;
+			border-radius: 10px;
+		}
+
+	}
+
+
 
 }
+
+
+
+
 

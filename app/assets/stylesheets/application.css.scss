@@ -11,6 +11,8 @@
  *= require_self
  *x require_tree .
  *= require store
+ *= require sessions
+  *= require users
  */
 
  $footer_link_background: #d5d5d5;
@@ -30,6 +32,10 @@
  	box-sizing: border-box;
  }
 
+ html, body{
+ 	height: 100%;
+ }
+
  body{ 
  	background-image: url('bg.png');
  	width: 70%;
@@ -37,9 +43,35 @@
  	font-family: "Arial Narrow", sans-serif;
  }
 
+section#container {
+	min-height: 78%;
+	margin-bottom: -5px;
+	position: relative;
+}
+
+
+section.notice, section.error{
+	padding: 10px;
+	ul{
+		list-style-type: none;
+	}
+}
+
+section.notice{
+	background-color: rgba(135,123,55,0.4);
+
+}
+
+section.error{
+	background-color: rgba(143,47,47,0.5);
+}
+
+
+
 header.main {
 	background: rgba(0,0,0,0.6);
 	clear: both;
+	overflow: auto;
 }
 
 #logo > img {
@@ -77,13 +109,22 @@ section#footer_amplifier {
 		background-size:100%;
 		background-repeat: no-repeat;
 		height: 64px;
+		bottom: 0px;
+}
+
+#clear_footer{
+	height: 150px;
+	clear: both;
 }
 
 footer {
 	font-color: #fff;
+	height: 150px;
 	section#footer_container{
 		background-color: $footer_background_color;
 		padding: 0 20px 0 20px;
+		
+		position: relative;
 	}
 	ul{
 		list-style-type: none;
@@ -104,6 +145,18 @@ footer {
 				vertical-align: center;
 			}
 		}
+	}
+}
+
+nav.sub{
+	float: right;
+	padding: 0px 10px 10px 10px;
+	a{
+		color: #FFF;
+		text-decoration: none;
+		background-color: #4F0000;
+		padding: 10px;
+		border-radius: 10px;
 	}
 }
 

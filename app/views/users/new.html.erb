@@ -1,12 +1,15 @@
-<h1>Sign Up</h1>
-
-<%= form_for @user do |f| %>
+<section id="signup">
+	<header>
+		<h1>Sign Up</h1>
+	</header>
+	
+	<%= form_for @user do |f| %>
 	<% if @user.errors.any? %>
 	<section class="error">
 		<h2>Form is invalid</h2>
 		<ul>
 			<% for message in @user.errors.full_messages %>
-				<li><%= message %></li>
+			<li><%= message %></li>
 			<% end %>
 		</ul>
 	</section>
@@ -27,21 +30,22 @@
 		<%= f.label :email %>
 		<%= f.text_field :email %>
 	</section>
-
-	<div class="field">
-    	<%= f.label :province_id %><br />
-    	<%= f.collection_select :province_id, @provinces, :id, :name %>
-  	</div>
+	
+	<section class="field">
+		<%= f.label :province_id %>
+		<%= f.collection_select :province_id, @provinces, :id, :name %>
+	</section>
 	<section class="field">
 		<%= f.label :password %>
 		<%= f.password_field :password %>
 	</section>
-
+	
 	<section class="field">
 		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation %>
 	</section>
 	<section class="field">
-		<%= f.submit %>
+		<%= submit_tag "Sign", :id => "submit" %>
 	</section>
-<% end %>
+	<% end %>
+</section>
