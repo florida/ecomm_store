@@ -6,5 +6,8 @@ module ApplicationHelper
 	def tax_percent amount
 	  sprintf("%.2f", amount * 100) + "%"
 	end
-		
+
+	def title(page_title)
+		content_for(:title) { page_title }
+	end		
 end
